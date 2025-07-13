@@ -19,7 +19,7 @@ const Footer = () => {
       {
         title: 'Resources',
         links: [
-          { name: 'Resume', href: '#resume', external: false },
+          { name: 'Resume', href: 'https://drive.google.com/file/d/1h7lx5x03ZTm5KSLq7Lvx5nEHqqsamMoS/view?usp=sharing', external: true },
           { name: 'GitHub', href: 'https://github.com/AdityaKumbhar21', external: true },
           { name: 'Medium', href: 'https://medium.com/@adityakumbhar915', external: true },
           { name: 'LinkedIn', href: 'https://www.linkedin.com/in/aditya-kumbhar-688a17252/', external: true },

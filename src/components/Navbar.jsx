@@ -20,7 +20,7 @@ const Navbar = ({ darkMode, setDarkMode }) => {
     { name: 'Skills', href: '#skills' },
     { name: 'Projects', href: '#projects' },
     { name: 'Contact', href: '#contact' },
-    { name: 'Resume', href: 'YOUR_GOOGLE_DRIVE_LINK_HERE' },
+    { name: 'Resume', href: 'https://drive.google.com/file/d/1h7lx5x03ZTm5KSLq7Lvx5nEHqqsamMoS/view?usp=sharing' },
   ];
 
   const scrollToSection = (href) => {

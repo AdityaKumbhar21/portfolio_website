@@ -74,7 +74,7 @@ const Hero = () => {
             </motion.button>
             
             <motion.a
-              href="YOUR_GOOGLE_DRIVE_LINK_HERE"
+              href="https://drive.google.com/file/d/1h7lx5x03ZTm5KSLq7Lvx5nEHqqsamMoS/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}

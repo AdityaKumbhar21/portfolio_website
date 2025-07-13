@@ -4,14 +4,14 @@ import { Github, ExternalLink, FileText, Presentation, Database, Brain, BarChart
 const Projects = () => {
   const projects = [
     {
-      title: 'Pizza Sales Forecasting (Python & Time Series)',
-      description: 'Developed a sales forecasting model using Python (ARIMA/Prophet) to predict future sales trends with high accuracy. Conducted EDA to identify seasonal patterns and key sales drivers, visualizing insights via Tableau dashboards.',
+      title: 'Pizza Sales Analysis and Forecasting (Python & Time Series) - Ongoing',
+      description: 'Currently developing a sales forecasting model using Python (ARIMA/Prophet) to predict future sales trends. Completed EDA to identify seasonal patterns and key sales drivers, created Tableau dashboards for insights visualization, and prepared EDA presentation. Currently working on the forecasting model implementation.',
       image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400&h=250&fit=crop',
       category: 'Time Series Analysis',
       icon: TrendingUp,
-      technologies: ['Python', 'ARIMA', 'Prophet', 'Tableau', 'EDA', 'Time Series'],
+      technologies: ['Python', 'ARIMA', 'Prophet', 'Tableau', 'EDA', 'Time Series', 'In Progress'],
       links: [
-        { name: 'Dashboard', url: '#', icon: BarChart3 },
+        { name: 'Dashboard', url: 'https://public.tableau.com/app/profile/aditya.kumbhar5912/viz/pizza_sales_dashboard_17521570861700/PizzaSalesDashboard', icon: BarChart3 },
         { name: 'GitHub', url: 'https://github.com/AdityaKumbhar21/Pizza_Sales_Analysis_and_Forecasting', icon: Github },
         { name: 'Blog', url: '#', icon: FileText },
         { name: 'PPT', url: 'https://www.canva.com/design/DAGsfnHfxyA/0GiAfzLRkzJmdqou8yJo0w/view?utm_content=DAGsfnHfxyA&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h7c8f25b690', icon: Presentation },
