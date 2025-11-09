@@ -11,20 +11,14 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
-
   useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [darkMode]);
+    document.documentElement.classList.add('dark');
+  }, []);
 
   return (
     <Router>
-      <div className={`min-h-screen ${darkMode ? 'dark' : ''} bg-gray-50 dark:bg-dark-900 transition-colors duration-300`}>
-        <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
+      <div className="min-h-screen dark bg-dark-950 transition-colors duration-300">
+        <Navbar />
         <main>
           <Routes>
             <Route path="/" element={

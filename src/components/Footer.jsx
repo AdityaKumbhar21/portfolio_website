@@ -63,7 +63,7 @@ const Footer = () => {
                 <span className="text-xl font-bold">Aditya Kumbhar</span>
               </div>
               <p className="text-gray-400 mb-6 leading-relaxed">
-                Data Science portfolio. Passionate about extracting actionable insights from complex data and building impactful machine learning solutions.<br />MIT Academy of Engineering
+                Full Stack Developer portfolio. Passionate about building scalable web applications and creating seamless digital experiences.<br />MIT Academy of Engineering
               </p>
               <div className="flex space-x-4">
                 {footerLinks.social.map((social, index) => (
@@ -78,7 +78,7 @@ const Footer = () => {
                     viewport={{ once: true }}
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
-                    className="w-10 h-10 bg-dark-800 hover:bg-primary-600 rounded-lg flex items-center justify-center text-gray-400 hover:text-white transition-all duration-200"
+                    className="w-10 h-10 bg-dark-800 hover:bg-primary-500 border border-dark-700 hover:border-primary-500 rounded-lg flex items-center justify-center text-gray-400 hover:text-dark-950 transition-all duration-200"
                   >
                     <social.icon size={18} />
                   </motion.a>

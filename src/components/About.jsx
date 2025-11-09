@@ -19,7 +19,7 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="section-padding bg-white dark:bg-dark-800">
+    <section id="about" className="section-padding bg-dark-900">
       <div className="container-custom">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -28,11 +28,11 @@ const About = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
             About Me
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            I’m passionate about extracting actionable insights from complex data and building impactful machine learning solutions. With a strong foundation in Python, statistics, and data analytics, I’m constantly exploring ways to learn, grow, and contribute to data-driven projects.
+          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+            I'm passionate about building full-stack applications that solve real-world problems. With expertise in modern web technologies, I create scalable and performant solutions from frontend to backend.
           </p>
         </motion.div>
 
@@ -45,15 +45,22 @@ const About = () => {
             viewport={{ once: true }}
             className="space-y-8"
           >
-            {/* Profile Image */}
+            {/* Profile Image with enhanced styling */}
             <div className="relative">
-              <div className="w-80 h-80 mx-auto relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-primary-400 to-purple-500 rounded-full transform rotate-6"></div>
-                <div className="absolute inset-2 bg-white dark:bg-dark-700 rounded-full flex items-center justify-center">
-                  <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 dark:from-dark-600 dark:to-dark-500 rounded-full flex items-center justify-center overflow-hidden">
+              <div className="w-80 h-80 mx-auto relative group">
+                {/* Animated gradient border */}
+                <div className="absolute inset-0 bg-gradient-to-r from-primary-500 via-accent-500 to-primary-500 rounded-full transform rotate-6 opacity-60 group-hover:opacity-100 transition-opacity duration-300 animate-float"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-primary-500 via-accent-500 to-primary-500 rounded-full transform -rotate-6 opacity-40 group-hover:opacity-70 transition-opacity duration-300 animate-float" style={{ animationDelay: '1s' }}></div>
+                
+                {/* Inner container */}
+                <div className="absolute inset-2 bg-dark-900 rounded-full flex items-center justify-center border-2 border-dark-800 group-hover:border-primary-500/50 transition-colors duration-300">
+                  <div className="w-full h-full bg-gradient-to-br from-dark-800 to-dark-900 rounded-full flex items-center justify-center overflow-hidden p-1">
                     <img src={profilePic} alt="Profile" className="w-full h-full object-cover rounded-full" />
                   </div>
                 </div>
+                
+                {/* Glow effect */}
+                <div className="absolute inset-0 rounded-full bg-primary-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
             </div>
 
@@ -66,11 +73,11 @@ const About = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="text-center p-4 rounded-lg bg-gray-50 dark:bg-dark-700"
+                  className="text-center p-6 rounded-xl bg-dark-800/50 backdrop-blur-sm border border-dark-700 hover:border-primary-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary-500/10"
                 >
-                  <stat.icon size={32} className="mx-auto mb-2 text-primary-600 dark:text-primary-400" />
-                  <div className="text-2xl font-bold text-gray-900 dark:text-white">{stat.value}</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">{stat.label}</div>
+                  <stat.icon size={32} className="mx-auto mb-2 text-primary-400" />
+                  <div className="text-2xl font-bold text-white">{stat.value}</div>
+                  <div className="text-sm text-gray-400">{stat.label}</div>
                 </motion.div>
               ))}
             </div>
@@ -85,23 +92,23 @@ const About = () => {
             className="space-y-8"
           >
             <div>
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+              <h3 className="text-2xl font-bold text-white mb-4">
                 Who I Am
               </h3>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
-                I have hands-on experience with data analysis, statistical modeling, and machine learning, and I’m proficient in tools such as Pandas, NumPy, Matplotlib, Seaborn, Scikit-learn, and Tableau. I’m skilled in SQL for querying and managing relational databases, and also have experience working with NoSQL databases.
+              <p className="text-gray-300 leading-relaxed mb-6">
+                I'm a full stack developer with expertise in building modern web applications. On the frontend, I work with React, Next.js, and modern CSS frameworks to create responsive and interactive user interfaces. On the backend, I develop robust APIs and server-side logic using Node.js, Python, and various frameworks.
               </p>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
-                I’m comfortable using Jupyter Notebooks, version control with Git, and integrating REST APIs. I’ve also deployed data apps and dashboards using platforms like Vercel and Render, enabling end-to-end data solution delivery.
+              <p className="text-gray-300 leading-relaxed mb-6">
+                I'm proficient in database design and management, working with both SQL and NoSQL databases. I'm experienced with version control using Git, deploying applications to cloud platforms like Vercel, AWS, and Render, and implementing best practices for code quality and performance optimization.
               </p>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                I’m driven by the goal of turning raw data into valuable insights and building solutions that make an impact. Always open to connecting with like-minded professionals, I thrive in collaborative environments where I can contribute, learn, and grow.
+              <p className="text-gray-300 leading-relaxed">
+                I'm driven by the goal of creating seamless digital experiences and building scalable solutions that make an impact. Always open to connecting with like-minded professionals, I thrive in collaborative environments where I can contribute, learn, and grow.
               </p>
             </div>
 
             {/* Experience Timeline */}
             <div>
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+              <h3 className="text-2xl font-bold text-white mb-6">
                 Academic Journey
               </h3>
               <div className="space-y-6">
@@ -112,13 +119,13 @@ const About = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                     viewport={{ once: true }}
-                    className="relative pl-8 border-l-2 border-primary-200 dark:border-primary-700"
+                    className="relative pl-8 border-l-2 border-primary-500/30"
                   >
-                    <div className="absolute left-0 top-0 w-4 h-4 bg-primary-500 rounded-full transform -translate-x-2"></div>
+                    <div className="absolute left-0 top-0 w-4 h-4 bg-primary-500 rounded-full transform -translate-x-2 glow"></div>
                     <div className="mb-2">
-                      <h4 className="text-lg font-semibold text-gray-900 dark:text-white">{exp.title}</h4>
-                      <p className="text-primary-600 dark:text-primary-400 font-medium">{exp.company}</p>
-                      <p className="text-sm text-gray-500 dark:text-gray-400">{exp.period}</p>
+                      <h4 className="text-lg font-semibold text-white">{exp.title}</h4>
+                      <p className="text-primary-400 font-medium">{exp.company}</p>
+                      <p className="text-sm text-gray-400">{exp.period}</p>
                     </div>
                     {/* Removed exp.description rendering */}
                   </motion.div>

@@ -10,12 +10,42 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-dark-900 dark:via-dark-800 dark:to-dark-900">
-      {/* Background Elements */}
+    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-dark-950">
+      {/* Animated Grid Background */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-20"></div>
+      
+      {/* Gradient Orbs with better positioning */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-float"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-float" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute top-40 left-40 w-80 h-80 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-float" style={{ animationDelay: '4s' }}></div>
+        <div className="absolute -top-40 -right-40 w-[600px] h-[600px] bg-primary-500 rounded-full filter blur-[140px] opacity-15 animate-float"></div>
+        <div className="absolute -bottom-40 -left-40 w-[600px] h-[600px] bg-accent-500 rounded-full filter blur-[140px] opacity-15 animate-float" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary-400 rounded-full filter blur-[140px] opacity-10 animate-float" style={{ animationDelay: '4s' }}></div>
+      </div>
+      
+      {/* Code-like decorations with better styling */}
+      <div className="absolute top-20 left-10 opacity-20 font-mono text-sm text-primary-400 hidden lg:block">
+        <div className="flex items-center gap-2">
+          <span className="text-accent-400">const</span>
+          <span className="text-primary-400">developer</span>
+          <span className="text-gray-500">=</span>
+          <span className="text-accent-300">{'{'}</span>
+        </div>
+      </div>
+      <div className="absolute bottom-20 right-10 opacity-20 font-mono text-sm text-accent-400 hidden lg:block">
+        <div className="flex items-center gap-2">
+          <span className="text-gray-500">{'}'}</span>
+          <span className="text-primary-400">;</span>
+        </div>
+      </div>
+      
+      {/* Floating code snippets */}
+      <div className="absolute top-1/4 right-20 opacity-10 font-mono text-xs text-gray-400 hidden xl:block">
+        <div className="code-block max-w-xs">
+          <div className="text-accent-400">function</div>
+          <div className="text-primary-400 ml-4">buildPortfolio()</div>
+          <div className="text-gray-500 ml-4">{'{'}</div>
+          <div className="text-gray-300 ml-8">return awesome;</div>
+          <div className="text-gray-500 ml-4">{'}'}</div>
+        </div>
       </div>
 
       <div className="container-custom relative z-10">
@@ -26,35 +56,47 @@ const Hero = () => {
             transition={{ duration: 0.8 }}
             className="mb-6"
           >
-            <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200">
-              <span className="w-2 h-2 bg-primary-500 rounded-full mr-2 animate-pulse"></span>
-              Available for new opportunities
-            </span>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
+              className="inline-flex items-center px-5 py-2.5 rounded-full text-sm font-medium bg-dark-900/80 backdrop-blur-sm border border-primary-500/40 text-primary-400 shadow-lg shadow-primary-500/10"
+            >
+              <span className="w-2 h-2 bg-primary-500 rounded-full mr-3 animate-pulse"></span>
+              <span className="font-mono text-accent-400">Available for new opportunities</span>
+            </motion.div>
           </motion.div>
 
-          <motion.h1
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6 leading-tight"
+            className="mb-8"
           >
-            Hi, I'm{' '}
-            <span className="bg-gradient-to-r from-primary-600 to-purple-600 bg-clip-text text-transparent">
-              Aditya Kumbhar
-            </span>
-            <br />
-            <span className="text-3xl sm:text-4xl lg:text-5xl text-gray-700 dark:text-gray-300">
-              Data Science
-            </span>
-          </motion.h1>
+            <div className="font-mono text-accent-400 text-lg sm:text-xl mb-4 opacity-80">
+              <span className="text-primary-400">const</span> <span className="text-accent-300">developer</span> <span className="text-gray-500">=</span>
+            </div>
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-4 leading-tight">
+              <span className="text-white">Hi, I'm </span>
+              <span className="text-gradient bg-gradient-to-r from-primary-400 via-accent-400 to-primary-400 bg-clip-text text-transparent">
+                Aditya Kumbhar
+              </span>
+            </h1>
+            <div className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-200 mb-2">
+              Full Stack Developer
+            </div>
+            <div className="font-mono text-accent-400 text-lg sm:text-xl opacity-80">
+              <span className="text-gray-500">;</span>
+            </div>
+          </motion.div>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto leading-relaxed"
+            className="text-xl sm:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed font-light"
           >
-            I'm a BTech student (2023-2027), passionate about data science, analytics, and technology. I love exploring how data can be used to solve real-world problems.
+            I'm a <span className="text-primary-400 font-medium">BTech student</span> (2023-2027), passionate about building <span className="text-accent-400 font-medium">scalable web applications</span> and creating seamless user experiences. I love turning ideas into reality through code.
           </motion.p>
 
           <motion.div
@@ -87,24 +129,19 @@ const Hero = () => {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="flex justify-center items-center space-x-8 text-gray-500 dark:text-gray-400"
+            className="flex justify-center items-center space-x-12 text-gray-400 mt-16"
           >
-            <div className="text-center">
-              <div className="text-2xl font-bold text-primary-600 dark:text-primary-400">2027</div>
-              <div className="text-sm">Graduation Year</div>
+            <div className="text-center group">
+              <div className="text-3xl font-bold text-gradient mb-1 group-hover:scale-110 transition-transform duration-300">2027</div>
+              <div className="text-sm text-gray-500 font-mono">Graduation</div>
             </div>
-            <div className="w-px h-8 bg-gray-300 dark:bg-gray-600"></div>
-            <div className="text-center">
-              <div className="text-2xl font-bold text-primary-600 dark:text-primary-400">4-5</div>
-              <div className="text-sm">Projects</div>
-            </div>
-            <div className="w-px h-8 bg-gray-300 dark:bg-gray-600"></div>
-            <div className="text-center">
-              <div className="text-2xl font-bold text-primary-600 dark:text-primary-400">Data</div>
-              <div className="text-sm">Enthusiast</div>
+            <div className="w-px h-12 bg-gradient-to-b from-transparent via-dark-700 to-transparent"></div>
+            <div className="text-center group">
+              <div className="text-3xl font-bold text-gradient mb-1 group-hover:scale-110 transition-transform duration-300">Code</div>
+              <div className="text-sm text-gray-500 font-mono">Enthusiast</div>
             </div>
           </motion.div>
         </div>
@@ -120,7 +157,7 @@ const Hero = () => {
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
-          className="flex flex-col items-center text-gray-500 dark:text-gray-400"
+          className="flex flex-col items-center text-gray-400"
         >
           <span className="text-sm mb-2">Scroll Down</span>
           <ChevronDown size={20} />
