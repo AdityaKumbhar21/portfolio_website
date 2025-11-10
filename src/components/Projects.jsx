@@ -60,17 +60,18 @@ const Projects = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="card overflow-hidden group"
+              className="card overflow-hidden group relative"
             >
-              <div className="relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary-500/20 to-accent-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-primary-500/0 via-primary-500/10 to-accent-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"></div>
+              <div className="relative overflow-hidden z-10">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary-500/20 via-accent-500/20 to-electric-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
                 <img
                   src={project.image}
                   alt={project.title}
                   className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute top-4 left-4 z-20">
-                  <div className="w-10 h-10 bg-gradient-to-br from-primary-500 to-accent-500 rounded-xl flex items-center justify-center shadow-lg shadow-primary-500/30 group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-10 h-10 bg-gradient-to-br from-primary-500 via-accent-500 to-electric-500 rounded-xl flex items-center justify-center shadow-lg shadow-primary-500/30 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300 neon-glow">
                     <project.icon size={18} className="text-white" />
                   </div>
                 </div>

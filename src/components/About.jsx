@@ -49,8 +49,8 @@ const About = () => {
             <div className="relative">
               <div className="w-80 h-80 mx-auto relative group">
                 {/* Animated gradient border */}
-                <div className="absolute inset-0 bg-gradient-to-r from-primary-500 via-accent-500 to-primary-500 rounded-full transform rotate-6 opacity-60 group-hover:opacity-100 transition-opacity duration-300 animate-float"></div>
-                <div className="absolute inset-0 bg-gradient-to-r from-primary-500 via-accent-500 to-primary-500 rounded-full transform -rotate-6 opacity-40 group-hover:opacity-70 transition-opacity duration-300 animate-float" style={{ animationDelay: '1s' }}></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-primary-500 via-accent-500 to-electric-500 rounded-full transform rotate-6 opacity-60 group-hover:opacity-100 transition-opacity duration-300 animate-float"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-primary-500 via-accent-500 to-electric-500 rounded-full transform -rotate-6 opacity-40 group-hover:opacity-70 transition-opacity duration-300 animate-float" style={{ animationDelay: '1s' }}></div>
                 
                 {/* Inner container */}
                 <div className="absolute inset-2 bg-dark-900 rounded-full flex items-center justify-center border-2 border-dark-800 group-hover:border-primary-500/50 transition-colors duration-300">
@@ -119,9 +119,11 @@ const About = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                     viewport={{ once: true }}
-                    className="relative pl-8 border-l-2 border-primary-500/30"
+                    className="relative pl-8 border-l-2 border-primary-500/30 group"
                   >
-                    <div className="absolute left-0 top-0 w-4 h-4 bg-primary-500 rounded-full transform -translate-x-2 glow"></div>
+                    <motion.div 
+                      whileHover={{ scale: 1.3 }}
+                      className="absolute left-0 top-0 w-4 h-4 bg-gradient-to-r from-primary-500 to-accent-500 rounded-full transform -translate-x-2 shadow-lg shadow-primary-500/50"></motion.div>
                     <div className="mb-2">
                       <h4 className="text-lg font-semibold text-white">{exp.title}</h4>
                       <p className="text-primary-400 font-medium">{exp.company}</p>

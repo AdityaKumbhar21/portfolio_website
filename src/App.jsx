@@ -1,23 +1,31 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
-import Blog from './components/Blog';
+import Experience from './components/Experience';
 import Contact from './components/Contact';
-
 import Footer from './components/Footer';
 
 function App() {
   useEffect(() => {
-    document.documentElement.classList.add('dark');
+    // Initialize theme from localStorage or default to dark
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const shouldBeDark = savedTheme ? savedTheme === 'dark' : prefersDark;
+    
+    if (shouldBeDark) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
   }, []);
 
   return (
     <Router>
-      <div className="min-h-screen dark bg-dark-950 transition-colors duration-300">
+      <div className="min-h-screen dark:bg-dark-950 bg-gray-50 transition-colors duration-300">
         <Navbar />
         <main>
           <Routes>
@@ -27,6 +35,7 @@ function App() {
                 <About />
                 <Skills />
                 <Projects />
+                <Experience />
                 <Contact />
               </>
             } />

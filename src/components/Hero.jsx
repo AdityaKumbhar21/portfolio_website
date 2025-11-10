@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion';
 import { ChevronDown, Download, Mail } from 'lucide-react';
+import TypingAnimation from './TypingAnimation';
+import ParticleBackground from './ParticleBackground';
 
 const Hero = () => {
   const scrollToContact = () => {
@@ -9,16 +11,21 @@ const Hero = () => {
     }
   };
 
+  const roles = ['Full Stack Developer', 'Problem Solver', 'Code Enthusiast', 'Tech Innovator'];
+
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-dark-950">
-      {/* Animated Grid Background */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-20"></div>
+      {/* Particle Background */}
+      <ParticleBackground particleCount={60} />
       
-      {/* Gradient Orbs with better positioning */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-[600px] h-[600px] bg-primary-500 rounded-full filter blur-[140px] opacity-15 animate-float"></div>
-        <div className="absolute -bottom-40 -left-40 w-[600px] h-[600px] bg-accent-500 rounded-full filter blur-[140px] opacity-15 animate-float" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary-400 rounded-full filter blur-[140px] opacity-10 animate-float" style={{ animationDelay: '4s' }}></div>
+      {/* Animated Grid Background */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-20 z-0"></div>
+      
+      {/* Gradient Orbs with neon colors */}
+      <div className="absolute inset-0 overflow-hidden z-0">
+        <div className="absolute -top-40 -right-40 w-[600px] h-[600px] bg-primary-500 rounded-full filter blur-[140px] opacity-20 animate-float"></div>
+        <div className="absolute -bottom-40 -left-40 w-[600px] h-[600px] bg-accent-500 rounded-full filter blur-[140px] opacity-20 animate-float" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-electric-500 rounded-full filter blur-[140px] opacity-15 animate-float" style={{ animationDelay: '4s' }}></div>
       </div>
       
       {/* Code-like decorations with better styling */}
@@ -48,7 +55,7 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className="container-custom relative z-10">
+      <div className="container-custom relative z-20">
         <div className="text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -78,12 +85,12 @@ const Hero = () => {
             </div>
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-4 leading-tight">
               <span className="text-white">Hi, I'm </span>
-              <span className="text-gradient bg-gradient-to-r from-primary-400 via-accent-400 to-primary-400 bg-clip-text text-transparent">
+              <span className="text-gradient">
                 Aditya Kumbhar
               </span>
             </h1>
-            <div className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-200 mb-2">
-              Full Stack Developer
+            <div className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-200 mb-2 min-h-[3rem] sm:min-h-[4rem] lg:min-h-[5rem] flex items-center justify-center">
+              <TypingAnimation words={roles} speed={100} deleteSpeed={50} delay={2000} />
             </div>
             <div className="font-mono text-accent-400 text-lg sm:text-xl opacity-80">
               <span className="text-gray-500">;</span>

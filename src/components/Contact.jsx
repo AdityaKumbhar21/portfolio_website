@@ -94,14 +94,20 @@ const Contact = () => {
           viewport={{ once: true }}
           className="space-y-6 mb-12"
         >
-          <div className="flex items-center justify-center gap-3 text-gray-300 bg-dark-900/50 backdrop-blur-sm border border-dark-800 rounded-xl p-4 hover:border-primary-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary-500/10">
-            <Mail size={22} className="text-primary-400" />
-            <span className="font-mono text-accent-400">adityakumbhar915@gmail.com</span>
-          </div>
-          <div className="flex items-center justify-center gap-3 text-gray-300 bg-dark-900/50 backdrop-blur-sm border border-dark-800 rounded-xl p-4 hover:border-primary-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary-500/10">
-            <MapPin size={22} className="text-primary-400" />
-            <span className="font-mono text-accent-400">Pune, India</span>
-          </div>
+          <motion.div 
+            whileHover={{ scale: 1.05, y: -2 }}
+            className="flex items-center justify-center gap-3 text-gray-300 bg-dark-900/50 backdrop-blur-sm border border-dark-800 rounded-xl p-4 hover:border-primary-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary-500/20 group"
+          >
+            <Mail size={22} className="text-primary-400 group-hover:text-primary-300 transition-colors" />
+            <span className="font-mono text-accent-400 group-hover:text-accent-300 transition-colors">adityakumbhar915@gmail.com</span>
+          </motion.div>
+          <motion.div 
+            whileHover={{ scale: 1.05, y: -2 }}
+            className="flex items-center justify-center gap-3 text-gray-300 bg-dark-900/50 backdrop-blur-sm border border-dark-800 rounded-xl p-4 hover:border-primary-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary-500/20 group"
+          >
+            <MapPin size={22} className="text-primary-400 group-hover:text-primary-300 transition-colors" />
+            <span className="font-mono text-accent-400 group-hover:text-accent-300 transition-colors">Pune, India</span>
+          </motion.div>
         </motion.div>
         
         <motion.div
@@ -111,15 +117,36 @@ const Contact = () => {
           viewport={{ once: true }}
           className="flex flex-wrap justify-center gap-4"
         >
-          <a href="https://github.com/AdityaKumbhar21" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 bg-dark-900/50 backdrop-blur-sm border border-dark-800 text-gray-300 hover:text-primary-400 hover:border-primary-500/50 font-medium transition-all duration-300 rounded-xl hover:shadow-lg hover:shadow-primary-500/20 hover:scale-105">
-            <Github size={20} /> GitHub
-          </a>
-          <a href="https://medium.com/@adityakumbhar915" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 bg-dark-900/50 backdrop-blur-sm border border-dark-800 text-gray-300 hover:text-primary-400 hover:border-primary-500/50 font-medium transition-all duration-300 rounded-xl hover:shadow-lg hover:shadow-primary-500/20 hover:scale-105">
-            <Globe size={20} /> Medium
-          </a>
-          <a href="https://www.linkedin.com/in/aditya-kumbhar-688a17252/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 bg-dark-900/50 backdrop-blur-sm border border-dark-800 text-gray-300 hover:text-primary-400 hover:border-primary-500/50 font-medium transition-all duration-300 rounded-xl hover:shadow-lg hover:shadow-primary-500/20 hover:scale-105">
-            <Linkedin size={20} /> LinkedIn
-          </a>
+          <motion.a 
+            href="https://github.com/AdityaKumbhar21" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.95 }}
+            className="flex items-center gap-2 px-6 py-3 bg-dark-900/50 backdrop-blur-sm border border-dark-800 text-gray-300 hover:text-primary-400 hover:border-primary-500/50 font-medium transition-all duration-300 rounded-xl hover:shadow-lg hover:shadow-primary-500/20 group"
+          >
+            <Github size={20} className="group-hover:scale-110 transition-transform" /> GitHub
+          </motion.a>
+          <motion.a 
+            href="https://medium.com/@adityakumbhar915" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.95 }}
+            className="flex items-center gap-2 px-6 py-3 bg-dark-900/50 backdrop-blur-sm border border-dark-800 text-gray-300 hover:text-accent-400 hover:border-accent-500/50 font-medium transition-all duration-300 rounded-xl hover:shadow-lg hover:shadow-accent-500/20 group"
+          >
+            <Globe size={20} className="group-hover:scale-110 transition-transform" /> Medium
+          </motion.a>
+          <motion.a 
+            href="https://www.linkedin.com/in/aditya-kumbhar-688a17252/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.95 }}
+            className="flex items-center gap-2 px-6 py-3 bg-dark-900/50 backdrop-blur-sm border border-dark-800 text-gray-300 hover:text-electric-400 hover:border-electric-500/50 font-medium transition-all duration-300 rounded-xl hover:shadow-lg hover:shadow-electric-500/20 group"
+          >
+            <Linkedin size={20} className="group-hover:scale-110 transition-transform" /> LinkedIn
+          </motion.a>
         </motion.div>
       </div>
     </section>

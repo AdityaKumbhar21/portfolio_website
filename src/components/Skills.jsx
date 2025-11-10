@@ -73,10 +73,10 @@ const Skills = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: categoryIndex * 0.1 }}
               viewport={{ once: true }}
-              className="card p-6"
+              className="card p-6 group"
             >
               <div className="flex items-center mb-6">
-                <div className="w-14 h-14 bg-gradient-to-br from-primary-500 to-accent-500 rounded-xl flex items-center justify-center mr-4 shadow-lg shadow-primary-500/20 group-hover:shadow-primary-500/40 transition-shadow duration-300">
+                <div className="w-14 h-14 bg-gradient-to-br from-primary-500 via-accent-500 to-electric-500 rounded-xl flex items-center justify-center mr-4 shadow-lg shadow-primary-500/20 group-hover:shadow-primary-500/40 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
                   <category.icon size={26} className="text-white" />
                 </div>
                 <h3 className="text-xl font-bold text-white group-hover:text-primary-400 transition-colors duration-300">
@@ -86,12 +86,13 @@ const Skills = () => {
 
               <div className="flex flex-wrap gap-3">
                 {category.skills.map((skill) => (
-                  <span
+                  <motion.span
                     key={skill.name}
-                    className="px-4 py-2.5 bg-dark-800/80 backdrop-blur-sm rounded-full text-sm font-medium text-gray-300 border border-dark-700 hover:border-primary-500/60 hover:text-primary-400 hover:bg-dark-800 transition-all duration-300 hover:shadow-md hover:shadow-primary-500/20 hover:scale-105"
+                    whileHover={{ scale: 1.1, y: -2 }}
+                    className="px-4 py-2.5 bg-dark-800/80 backdrop-blur-sm rounded-full text-sm font-medium text-gray-300 border border-dark-700 hover:border-primary-500/60 hover:text-primary-400 hover:bg-dark-800 transition-all duration-300 hover:shadow-md hover:shadow-primary-500/20 cursor-default"
                   >
                     {skill.name}
-                  </span>
+                  </motion.span>
                 ))}
               </div>
             </motion.div>

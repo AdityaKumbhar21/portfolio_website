@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion } from 'framer-motion';
+import ThemeToggle from './ThemeToggle';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,6 +20,7 @@ const Navbar = () => {
     { name: 'About', href: '#about' },
     { name: 'Skills', href: '#skills' },
     { name: 'Projects', href: '#projects' },
+    { name: 'Experience', href: '#experience' },
     { name: 'Contact', href: '#contact' },
     { name: 'Resume', href: 'https://drive.google.com/file/d/1h7lx5x03ZTm5KSLq7Lvx5nEHqqsamMoS/view?usp=sharing' },
   ];
@@ -81,10 +83,12 @@ const Navbar = () => {
                 </motion.button>
               )
             ))}
+            <ThemeToggle />
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="flex items-center">
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="md:hidden p-2 rounded-lg bg-dark-800 text-gray-300 hover:bg-dark-700 transition-colors duration-200 border border-dark-700"
