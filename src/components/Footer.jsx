@@ -1,142 +1,59 @@
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Heart, Globe } from 'lucide-react';
+import { Github, Linkedin, Globe } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
-  const footerLinks = {
-    sections: [
-      {
-        title: 'Navigation',
-        links: [
-          { name: 'Home', href: '#home' },
-          { name: 'About', href: '#about' },
-          { name: 'Skills', href: '#skills' },
-          { name: 'Projects', href: '#projects' },
-          { name: 'Experience', href: '#experience' },
-          { name: 'Contact', href: '#contact' },
-        ]
-      },
-      {
-        title: 'Resources',
-        links: [
-          { name: 'Resume', href: 'https://drive.google.com/file/d/1h7lx5x03ZTm5KSLq7Lvx5nEHqqsamMoS/view?usp=sharing', external: true },
-          { name: 'GitHub', href: 'https://github.com/AdityaKumbhar21', external: true },
-          { name: 'Medium', href: 'https://medium.com/@adityakumbhar915', external: true },
-          { name: 'LinkedIn', href: 'https://www.linkedin.com/in/aditya-kumbhar-688a17252/', external: true },
-        ]
-      }
-    ],
-    social: [
-      { name: 'GitHub', icon: Github, url: 'https://github.com/AdityaKumbhar21' },
-      { name: 'LinkedIn', icon: Linkedin, url: 'https://www.linkedin.com/in/aditya-kumbhar-688a17252/' },
-      { name: 'Medium', icon: Globe, url: 'https://medium.com/@adityakumbhar915' },
-    ]
-  };
-
-  const scrollToSection = (href) => {
-    if (href.startsWith('#')) {
-      const element = document.querySelector(href);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-  };
-
   return (
-    <footer className="bg-dark-900 text-white">
-      <div className="container-custom">
-        {/* Main Footer Content */}
-        <div className="py-16">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* Brand Section */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
-              className="lg:col-span-1"
-            >
-              <div className="flex items-center space-x-2 mb-4">
-                <div className="w-8 h-8 bg-gradient-to-r from-primary-500 to-primary-700 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">AK</span>
-                </div>
-                <span className="text-xl font-bold">Aditya Kumbhar</span>
-              </div>
-              <p className="text-gray-400 mb-6 leading-relaxed">
-                Full Stack Developer portfolio. Passionate about building scalable web applications and creating seamless digital experiences.<br />MIT Academy of Engineering
-              </p>
-              <div className="flex space-x-4">
-                {footerLinks.social.map((social, index) => (
-                  <motion.a
-                    key={index}
-                    href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.3, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    className="w-10 h-10 bg-dark-800 hover:bg-primary-500 border border-dark-700 hover:border-primary-500 rounded-lg flex items-center justify-center text-gray-400 hover:text-dark-950 transition-all duration-200"
-                  >
-                    <social.icon size={18} />
-                  </motion.a>
-                ))}
-              </div>
-            </motion.div>
+    <footer className="relative border-t border-white/10 bg-white/5 dark:bg-black/20 backdrop-blur-lg mt-20">
+      <div className="container-custom py-12">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+          
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-500 to-purple-600 flex items-center justify-center text-white font-bold text-sm">
+              AK
+            </div>
+            <span className="font-bold text-lg tracking-tight">Aditya Kumbhar</span>
+          </div>
 
-            {/* Footer Links */}
-            {footerLinks.sections.map((section, sectionIndex) => (
-              <motion.div
-                key={section.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: sectionIndex * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <h3 className="text-lg font-semibold mb-4">{section.title}</h3>
-                <ul className="space-y-3">
-                  {section.links.map((link, linkIndex) => (
-                    <li key={linkIndex}>
-                      {link.external ? (
-                        <a
-                          href={link.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-gray-400 hover:text-primary-400 transition-colors duration-200"
-                        >
-                          {link.name}
-                        </a>
-                      ) : (
-                        <button
-                          onClick={() => scrollToSection(link.href)}
-                          className="text-gray-400 hover:text-primary-400 transition-colors duration-200 text-left"
-                        >
-                          {link.name}
-                        </button>
-                      )}
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            ))}
+          <div className="flex gap-6 text-sm text-gray-600 dark:text-gray-400">
+            <a href="#home" className="hover:text-primary-500 transition-colors">Home</a>
+            <a href="#projects" className="hover:text-primary-500 transition-colors">Projects</a>
+            <a href="/blog" className="hover:text-primary-500 transition-colors">Blog</a>
+            <a href="#contact" className="hover:text-primary-500 transition-colors">Contact</a>
+          </div>
+
+          <div className="flex gap-4">
+            <a 
+              href="https://github.com/AdityaKumbhar21" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-gray-500 hover:text-black dark:hover:text-white transition-colors"
+            >
+              <Github size={20} />
+            </a>
+            <a 
+              href="https://www.linkedin.com/in/aditya-kumbhar-688a17252/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-gray-500 hover:text-[#0077b5] transition-colors"
+            >
+              <Linkedin size={20} />
+            </a>
+            <a 
+              href="https://medium.com/@adityakumbhar915" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-gray-500 hover:text-black dark:hover:text-white transition-colors"
+            >
+              <Globe size={20} />
+            </a>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="border-t border-dark-700 py-8"
-        >
-          <div className="flex justify-center items-center">
-            <span className="text-gray-400">© {currentYear} Aditya Kumbhar | MIT Academy of Engineering</span>
-          </div>
-        </motion.div>
+        <div className="mt-8 pt-8 border-t border-white/5 text-center text-xs text-gray-500">
+          <p>© {currentYear} Aditya Kumbhar. Built with React, Tailwind & Framer Motion.</p>
+        </div>
       </div>
     </footer>
   );

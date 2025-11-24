@@ -1,5 +1,5 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -8,6 +8,7 @@ import Projects from './components/Projects';
 import Experience from './components/Experience';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import AllProjects from './pages/AllProjects';
 
 function App() {
   useEffect(() => {
@@ -25,23 +26,27 @@ function App() {
 
   return (
     <Router>
-      <div className="min-h-screen dark:bg-dark-950 bg-gray-50 transition-colors duration-300">
-        <Navbar />
-        <main>
-          <Routes>
-            <Route path="/" element={
-              <>
+      <div className="min-h-screen bg-gray-50 dark:bg-[#050505] text-gray-900 dark:text-gray-100 transition-colors duration-300 selection:bg-primary-500/30">
+        <div className="fixed inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]"></div>
+        <div className="fixed inset-0 -z-10 h-full w-full bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
+        
+        <Routes>
+          <Route path="/projects" element={<AllProjects />} />
+          <Route path="/" element={
+            <>
+              <Navbar />
+              <main className="pt-20">
                 <Hero />
+                <Projects />
                 <About />
                 <Skills />
-                <Projects />
                 <Experience />
                 <Contact />
-              </>
-            } />
-          </Routes>
-        </main>
-        <Footer />
+              </main>
+              <Footer />
+            </>
+          } />
+        </Routes>
       </div>
     </Router>
   );

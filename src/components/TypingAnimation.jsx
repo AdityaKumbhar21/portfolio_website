@@ -40,9 +40,9 @@ const TypingAnimation = ({ words, speed = 100, deleteSpeed = 50, delay = 2000 })
   }, [currentText, isDeleting, currentWordIndex, words, speed, deleteSpeed, delay, typingSpeed]);
 
   return (
-    <span className="text-gradient">
+    <span>
       {currentText}
-      <span className="typing-cursor">|</span>
+      <span className="animate-pulse">|</span>
     </span>
   );
 };

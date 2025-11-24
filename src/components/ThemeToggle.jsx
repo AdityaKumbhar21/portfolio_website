@@ -6,7 +6,6 @@ const ThemeToggle = () => {
   const [isDark, setIsDark] = useState(true);
 
   useEffect(() => {
-    // Check for saved theme preference or default to dark
     const savedTheme = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     const shouldBeDark = savedTheme ? savedTheme === 'dark' : prefersDark;
@@ -34,28 +33,12 @@ const ThemeToggle = () => {
   return (
     <motion.button
       onClick={toggleTheme}
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.9 }}
-      className="relative w-12 h-12 rounded-full bg-dark-800 border border-dark-700 hover:border-primary-500/50 flex items-center justify-center text-gray-300 hover:text-primary-400 transition-all duration-300 group"
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      className="p-2 rounded-full bg-white/5 border border-white/10 text-gray-600 dark:text-gray-300 hover:bg-white/10 transition-colors"
       aria-label="Toggle theme"
     >
-      <motion.div
-        initial={false}
-        animate={{ rotate: isDark ? 0 : 180, opacity: isDark ? 1 : 0 }}
-        transition={{ duration: 0.3 }}
-        className="absolute"
-      >
-        <Moon size={18} />
-      </motion.div>
-      <motion.div
-        initial={false}
-        animate={{ rotate: isDark ? -180 : 0, opacity: isDark ? 0 : 1 }}
-        transition={{ duration: 0.3 }}
-        className="absolute"
-      >
-        <Sun size={18} />
-      </motion.div>
-      <span className="absolute inset-0 rounded-full bg-primary-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"></span>
+      {isDark ? <Moon size={20} /> : <Sun size={20} />}
     </motion.button>
   );
 };

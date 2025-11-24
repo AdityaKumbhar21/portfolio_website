@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion } from 'framer-motion';
-import ThemeToggle from './ThemeToggle';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,28 +8,23 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      setScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const navItems = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Experience', href: '#experience' },
-    { name: 'Contact', href: '#contact' },
-    { name: 'Resume', href: 'https://drive.google.com/file/d/1h7lx5x03ZTm5KSLq7Lvx5nEHqqsamMoS/view?usp=sharing' },
+    { name: 'Home', href: '#home', type: 'anchor' },
+    { name: 'About', href: '#about', type: 'anchor' },
+    { name: 'Projects', href: '#projects', type: 'anchor' },
+    { name: 'Contact', href: '#contact', type: 'anchor' },
   ];
 
-  const scrollToSection = (href) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+  const handleNavigation = (item) => {
     setIsOpen(false);
+    const element = document.querySelector(item.href);
+    if (element) element.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -38,60 +32,46 @@ const Navbar = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-dark-900/95 backdrop-blur-xl shadow-2xl shadow-primary-500/20 border-b border-dark-800/50'
-          : 'bg-transparent'
+        scrolled ? 'glass-nav py-3' : 'bg-transparent py-5'
       }`}
     >
       <div className="container-custom">
-        <div className="flex items-center justify-between h-16 px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between px-4 sm:px-6 lg:px-8">
           {/* Logo */}
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="flex items-center space-x-2"
-          >
-            <div className="w-8 h-8 bg-gradient-to-r from-primary-500 to-primary-700 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">AK</span>
+          <a href="#home" className="flex items-center gap-2 group">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-primary-500/20 group-hover:shadow-primary-500/40 transition-all duration-300">
+              AK
             </div>
-            {/* Removed 'Data Scientist' text as requested */}
-          </motion.div>
+          </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              item.name === 'Resume' ? (
-                <motion.a
+          <div className="hidden md:flex items-center gap-1">
+            <div className="flex items-center gap-1 bg-white/5 dark:bg-black/20 backdrop-blur-md border border-white/10 rounded-full p-1.5 px-3 mr-4">
+              {navItems.map((item) => (
+                <button
                   key={item.name}
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                    className="text-gray-300 hover:text-primary-400 font-medium transition-colors duration-200 cursor-pointer"
+                  onClick={() => handleNavigation(item)}
+                  className="px-4 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary-500 dark:hover:text-white transition-colors rounded-full hover:bg-white/10"
                 >
                   {item.name}
-                </motion.a>
-              ) : (
-                <motion.button
-                  key={item.name}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => scrollToSection(item.href)}
-                  className="text-gray-300 hover:text-primary-400 font-medium transition-colors duration-200"
-                >
-                  {item.name}
-                </motion.button>
-              )
-            ))}
-            <ThemeToggle />
+                </button>
+              ))}
+            </div>
+            <a
+              href="https://drive.google.com/file/d/106qBaCi5mp9ENlqjM_vBXSPn1W5p1aPy/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ml-2 btn-primary !py-2 !px-5 !text-sm"
+            >
+              Resume
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="flex items-center gap-2">
-            <ThemeToggle />
+          <div className="flex items-center gap-4 md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden p-2 rounded-lg bg-dark-800 text-gray-300 hover:bg-dark-700 transition-colors duration-200 border border-dark-700"
+              className="p-2 rounded-lg bg-white/5 border border-white/10 text-gray-300"
             >
               {isOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
@@ -104,30 +84,26 @@ const Navbar = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="md:hidden bg-dark-900 border-t border-dark-800"
+            className="md:hidden absolute top-full left-0 w-full glass-nav border-t border-white/10"
           >
-            <div className="px-4 py-2 space-y-1">
+            <div className="px-4 py-4 space-y-2">
               {navItems.map((item) => (
-                item.name === 'Resume' ? (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block w-full text-left px-3 py-2 text-gray-300 hover:text-primary-400 hover:bg-dark-800 rounded-lg transition-colors duration-200"
-                  >
-                    {item.name}
-                  </a>
-                ) : (
-                  <button
-                    key={item.name}
-                    onClick={() => scrollToSection(item.href)}
-                    className="block w-full text-left px-3 py-2 text-gray-300 hover:text-primary-400 hover:bg-dark-800 rounded-lg transition-colors duration-200"
-                  >
-                    {item.name}
-                  </button>
-                )
+                <button
+                  key={item.name}
+                  onClick={() => handleNavigation(item)}
+                  className="block w-full text-left px-4 py-3 text-gray-600 dark:text-gray-300 hover:bg-white/5 rounded-xl transition-colors"
+                >
+                  {item.name}
+                </button>
               ))}
+              <a
+                href="https://drive.google.com/file/d/106qBaCi5mp9ENlqjM_vBXSPn1W5p1aPy/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full text-center mt-4 btn-primary"
+              >
+                Resume
+              </a>
             </div>
           </motion.div>
         )}

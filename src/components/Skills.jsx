@@ -1,132 +1,161 @@
+import { useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
-import { Code, Database, Server, Globe, Settings } from 'lucide-react';
+import { Code, Database, Server, Globe, Settings, Brain, ChevronLeft, ChevronRight } from 'lucide-react';
+import useEmblaCarousel from 'embla-carousel-react';
+import Autoplay from 'embla-carousel-autoplay';
 
 const Skills = () => {
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { 
+      loop: true,
+      align: 'start',
+      slidesToScroll: 1,
+      containScroll: 'trimSnaps'
+    },
+    [Autoplay({ delay: 1500, stopOnInteraction: false })]
+  );
+
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
+
   const skillCategories = [
     {
-      title: 'Frontend Development',
+      title: 'Frontend',
       icon: Globe,
-      skills: [
-        { name: 'React', level: 90, color: 'from-blue-500 to-blue-600' },
-        { name: 'Next.js', level: 85, color: 'from-gray-500 to-gray-600' },
-        { name: 'JavaScript', level: 90, color: 'from-yellow-500 to-yellow-600' },
-        { name: 'TypeScript', level: 80, color: 'from-blue-600 to-blue-700' },
-        { name: 'HTML/CSS', level: 95, color: 'from-orange-500 to-orange-600' },
-        { name: 'Tailwind CSS', level: 90, color: 'from-cyan-500 to-cyan-600' },
-      ]
+      skills: ['React', 'Next.js', 'JavaScript', 'TypeScript', 'Tailwind CSS'],
+      color: 'from-blue-500/10 to-cyan-500/10'
     },
     {
-      title: 'Backend Development',
+      title: 'Backend',
       icon: Server,
-      skills: [
-        { name: 'Node.js', level: 85, color: 'from-green-500 to-green-600' },
-        { name: 'Express.js', level: 80, color: 'from-gray-600 to-gray-700' },
-        { name: 'Python', level: 85, color: 'from-blue-500 to-blue-600' },
-        { name: 'REST APIs', level: 85, color: 'from-purple-500 to-purple-600' },
-      ]
+      skills: ['Node.js', 'Express.js', 'Python', 'REST APIs'],
+      color: 'from-green-500/10 to-emerald-500/10'
     },
     {
-      title: 'Databases',
+      title: 'Database',
       icon: Database,
-      skills: [
-        { name: 'PostgreSQL', level: 85, color: 'from-blue-600 to-blue-700' },
-        { name: 'MongoDB', level: 80, color: 'from-green-600 to-green-700' },
-        { name: 'MySQL', level: 80, color: 'from-orange-500 to-orange-600' },
-      ]
+      skills: ['PostgreSQL', 'MongoDB', 'MySQL'],
+      color: 'from-purple-500/10 to-pink-500/10'
     },
     {
-      title: 'Tools & Technologies',
+      title: 'Machine Learning',
+      icon: Brain,
+      skills: ['TensorFlow', 'PyTorch', 'Scikit-learn', 'Pandas', 'NumPy'],
+      color: 'from-orange-500/10 to-red-500/10'
+    },
+    {
+      title: 'Tools',
       icon: Settings,
-      skills: [
-        { name: 'Git', level: 90, color: 'from-red-500 to-red-600' },
-        { name: 'Docker', level: 75, color: 'from-blue-500 to-blue-600' },
-        { name: 'AWS', level: 70, color: 'from-orange-500 to-orange-600' },
-        { name: 'Vercel', level: 85, color: 'from-gray-500 to-gray-600' },
-        { name: 'CI/CD', level: 75, color: 'from-purple-500 to-purple-600' },
-      ]
+      skills: ['Git', 'Docker', 'AWS', 'Vercel'],
+      color: 'from-gray-500/10 to-slate-500/10'
     }
   ];
 
   return (
-    <section id="skills" className="section-padding bg-dark-950">
+    <section id="skills" className="section-padding relative bg-dark-950 overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 bg-noise opacity-20"></div>
+        <div className="absolute inset-0 bg-grid-white opacity-50"></div>
+      </div>
+      
       <div className="container-custom">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-            Skills & Technologies
-          </h2>
-          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-            A comprehensive toolkit for building modern, scalable web applications
+          <h2 className="text-4xl font-bold mb-4 tracking-tight">Skills</h2>
+          <p className="text-gray-400 max-w-xl mx-auto text-lg">
+            My technical toolkit.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {skillCategories.map((category, categoryIndex) => (
-            <motion.div
-              key={category.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: categoryIndex * 0.1 }}
-              viewport={{ once: true }}
-              className="card p-6 group"
-            >
-              <div className="flex items-center mb-6">
-                <div className="w-14 h-14 bg-gradient-to-br from-primary-500 via-accent-500 to-electric-500 rounded-xl flex items-center justify-center mr-4 shadow-lg shadow-primary-500/20 group-hover:shadow-primary-500/40 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-                  <category.icon size={26} className="text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-white group-hover:text-primary-400 transition-colors duration-300">
-                  {category.title}
-                </h3>
-              </div>
+        {/* Carousel */}
+        <div className="relative">
+          <div className="overflow-hidden" ref={emblaRef}>
+            <div className="flex gap-6">
+            {skillCategories.map((category, index) => (
+              <motion.div
+                key={category.title}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="flex-[0_0_100%] md:flex-[0_0_calc(50%-12px)] lg:flex-[0_0_calc(33.333%-16px)] min-w-0"
+              >
+                <div className="glass-card p-8 border border-white/10 bg-dark-900/50 hover:bg-dark-900/70 transition-all h-full group relative overflow-hidden">
+                  {/* Animated gradient background on hover */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
+                  
+                  <div className="relative z-10">
+                    <div className="flex items-center gap-3 mb-6">
+                      <motion.div 
+                        className="p-3 rounded-full bg-white/5 border border-white/10 text-white"
+                        whileHover={{ rotate: 360, scale: 1.1 }}
+                        transition={{ duration: 0.6 }}
+                      >
+                        <category.icon size={20} />
+                      </motion.div>
+                      <h3 className="text-lg font-bold text-white tracking-tight">{category.title}</h3>
+                    </div>
 
-              <div className="flex flex-wrap gap-3">
-                {category.skills.map((skill) => (
-                  <motion.span
-                    key={skill.name}
-                    whileHover={{ scale: 1.1, y: -2 }}
-                    className="px-4 py-2.5 bg-dark-800/80 backdrop-blur-sm rounded-full text-sm font-medium text-gray-300 border border-dark-700 hover:border-primary-500/60 hover:text-primary-400 hover:bg-dark-800 transition-all duration-300 hover:shadow-md hover:shadow-primary-500/20 cursor-default"
-                  >
-                    {skill.name}
-                  </motion.span>
-                ))}
-              </div>
-            </motion.div>
-          ))}
+                    <div className="flex flex-wrap gap-2">
+                      {category.skills.map((skill, idx) => (
+                        <motion.span
+                          key={skill}
+                          initial={{ opacity: 0, x: -10 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          transition={{ delay: idx * 0.05 }}
+                          whileHover={{ scale: 1.1, y: -2 }}
+                          className="px-3 py-1 text-xs font-medium bg-white/5 text-gray-300 rounded-full border border-white/10 cursor-default hover:bg-white/10 hover:text-white transition-all"
+                        >
+                          {skill}
+                        </motion.span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+            </div>
+          </div>
+          
+          {/* Navigation Buttons */}
+          <button
+            onClick={scrollPrev}
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 lg:-translate-x-12 p-3 bg-white/10 hover:bg-white/20 text-white rounded-full border border-white/20 backdrop-blur-sm transition-all z-10 group"
+            aria-label="Previous slide"
+          >
+            <ChevronLeft size={20} className="group-hover:scale-110 transition-transform" />
+          </button>
+          <button
+            onClick={scrollNext}
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 lg:translate-x-12 p-3 bg-white/10 hover:bg-white/20 text-white rounded-full border border-white/20 backdrop-blur-sm transition-all z-10 group"
+            aria-label="Next slide"
+          >
+            <ChevronRight size={20} className="group-hover:scale-110 transition-transform" />
+          </button>
         </div>
 
-        {/* Additional Skills */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          viewport={{ once: true }}
-          className="mt-16 text-center"
-        >
-          <h3 className="text-2xl font-bold text-white mb-8">
-            Additional Skills
-          </h3>
-          <div className="flex flex-wrap justify-center gap-3">
-            {[
-              'Communication', 'Presentation', 'UI/UX Design'
-            ].map((skill, index) => (
-              <motion.span
-                key={skill}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.3, delay: index * 0.05 }}
-                viewport={{ once: true }}
-                className="px-4 py-2 bg-dark-800 rounded-full text-sm font-medium text-gray-300 border border-dark-700 hover:border-primary-500/50 hover:text-primary-400 transition-colors duration-200"
-              >
-                {skill}
-              </motion.span>
-            ))}
-          </div>
-        </motion.div>
+        {/* Carousel Indicators */}
+        <div className="flex justify-center gap-2 mt-8">
+          {skillCategories.map((_, index) => (
+            <motion.div
+              key={index}
+              className="w-2 h-2 rounded-full bg-white/20"
+              whileHover={{ scale: 1.5, backgroundColor: 'rgba(255,255,255,0.8)' }}
+              transition={{ duration: 0.2 }}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );

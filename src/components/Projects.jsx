@@ -1,149 +1,227 @@
 import { motion } from 'framer-motion';
-import { Github, ExternalLink, Sparkles, Link2 } from 'lucide-react';
+import { Github, ExternalLink, Sparkles, Code, ArrowUpRight, Zap, Layers, Terminal, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Projects = () => {
   const projects = [
     {
-      title: 'Qz.ai - AI Quiz Generator',
-      description: 'Built an AI-powered flashcard quiz app with Next.js, Prisma, PostgreSQL & Clerk, generating 10 MCQs in <3s with secure ownership & real-time scoring. Engineered Gemini JSON-based prompt + parsing pipeline for 100% structured output reliability across topics. Delivered type-safe, responsive UI (TS + Tailwind) supporting 1000+ quizzes per user with immediate feedback & scoring. Automated user sync via Clerk webhooks + Prisma upsert, enabling zero manual user management and secure multi-device data integrity. Deployed on Vercel with Prisma fixes + schema generation, ensuring zero deployment issues and edge-scaled performance.',
-      image: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=400&h=250&fit=crop',
-      category: 'Full Stack',
-      icon: Sparkles,
-      technologies: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL', 'Clerk', 'Gemini AI', 'Tailwind CSS', 'Vercel'],
+      title: 'Pair Program',
+      description: 'Real-time collaborative coding platform for technical interviews with WebSockets, AI-powered code analysis, and secure JWT authentication.',
+      image: '/pair_program.png',
+      technologies: ['React', 'Node.js', 'WebSockets', 'Y.js', 'LLM'],
       links: [
-        { name: 'Live App', url: 'https://qz-ai.vercel.app/', icon: ExternalLink },
-        { name: 'GitHub', url: '#', icon: Github },
+        { name: 'Live', url: 'https://pair-program-eta.vercel.app/' },
+        { name: 'Code', url: 'https://github.com/AdityaKumbhar21/pair_program' },
       ],
-      featured: false
+      className: "md:col-span-2 md:row-span-2"
     },
     {
-      title: 'NYN - Not Your Normal URL Shortener',
-      description: 'Built NYNURL, a scalable Next.js 15 + TypeScript URL shortener with sub-100 ms redirects and interactive analytics, now actively used by real users. Delivered free advanced click analytics + visual insights, outperforming paid competitors. Shipped custom-branded, mobile-optimized SaaS UI, boosting usability and adoption.',
-      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=250&fit=crop',
-      category: 'Full Stack',
-      icon: Link2,
-      technologies: ['Next.js 15', 'TypeScript', 'PostgreSQL', 'Prisma', 'Tailwind CSS', 'Vercel'],
+      title: 'Qz.ai - AI Quiz Generator',
+      description: 'AI-powered flashcard quiz app generating MCQs in <3s with secure ownership & real-time scoring.',
+      image: '/qz_ai.png',
+      technologies: ['Next.js', 'TypeScript', 'Prisma', 'Gemini AI'],
       links: [
-        { name: 'Live App', url: 'https://nyn-url-shortner.vercel.app/', icon: ExternalLink },
-        { name: 'GitHub', url: '#', icon: Github },
+        { name: 'Live', url: 'https://qz-ai.vercel.app/' },
+        { name: 'Code', url: 'https://github.com/AdityaKumbhar21/Qz_ai' },
       ],
-      featured: false
+      className: "md:col-span-2 md:row-span-1"
     }
   ];
 
-  const categories = ['All', 'Full Stack', 'Frontend', 'Backend', 'Web Application', 'Mobile App'];
-
   return (
-    <section id="projects" className="section-padding bg-dark-900">
+    <section id="projects" className="section-padding relative overflow-hidden bg-dark-950">
+      {/* Aesthetic Background */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 bg-noise opacity-20"></div>
+        <div className="absolute inset-0 bg-grid-white opacity-50"></div>
+      </div>
+
       <div className="container-custom">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="mb-12"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-            Featured Projects
-          </h2>
-          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-            A showcase of my full stack development projects, from web applications to mobile solutions
+          <h2 className="text-4xl font-bold mb-4 tracking-tight">Selected Work</h2>
+          <p className="text-gray-400 max-w-xl text-lg">
+            A collection of projects that showcase my passion for building robust and scalable applications.
           </p>
         </motion.div>
 
-        {/* Projects Grid - 2 columns side by side */}
-        <div className="grid md:grid-cols-2 gap-8">
-          {projects.map((project, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="card overflow-hidden group relative"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-primary-500/0 via-primary-500/10 to-accent-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"></div>
-              <div className="relative overflow-hidden z-10">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary-500/20 via-accent-500/20 to-electric-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute top-4 left-4 z-20">
-                  <div className="w-10 h-10 bg-gradient-to-br from-primary-500 via-accent-500 to-electric-500 rounded-xl flex items-center justify-center shadow-lg shadow-primary-500/30 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300 neon-glow">
-                    <project.icon size={18} className="text-white" />
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 auto-rows-[200px]">
+          {/* Project 1 - Large Featured */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="group relative md:col-span-2 md:row-span-2 glass-card overflow-hidden border border-white/10"
+            whileHover={{ scale: 1.01 }}
+            transition={{ duration: 0.4 }}
+          >
+            <div className="absolute inset-0">
+              <img 
+                src={projects[0].image} 
+                alt={projects[0].title}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-black/60 group-hover:bg-black/40 transition-colors duration-500" />
+            </div>
+            <div className="absolute bottom-0 left-0 p-6 w-full">
+              <div className="flex justify-between items-end">
+                <div className="flex-1">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Sparkles className="text-white/80" size={14} />
+                    <span className="text-xs font-medium text-white/80 uppercase tracking-widest">Featured</span>
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-2 tracking-tight">{projects[0].title}</h3>
+                  <p className="text-gray-300 text-xs mb-4 max-w-md leading-relaxed">{projects[0].description}</p>
+                  <div className="flex gap-2 flex-wrap">
+                    {projects[0].technologies.map((tech) => (
+                      <span key={tech} className="text-xs px-3 py-1 rounded-full bg-white/5 text-white/90 border border-white/10 backdrop-blur-sm">
+                        {tech}
+                      </span>
+                    ))}
                   </div>
                 </div>
-                <div className="absolute top-4 right-4 z-20">
-                  <span className="text-xs font-medium text-white bg-dark-900/90 backdrop-blur-md border border-primary-500/40 px-3 py-1.5 rounded-full shadow-lg">
-                    {project.category}
-                  </span>
-                </div>
-              </div>
-              
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-gradient transition-colors duration-300">
-                  {project.title}
-                </h3>
-                
-                <p className="text-gray-300 mb-5 text-sm leading-relaxed">
-                  {project.description}
-                </p>
-                
-                <div className="flex flex-wrap gap-1.5 mb-5">
-                  {project.technologies.slice(0, 3).map((tech, techIndex) => (
-                    <span
-                      key={techIndex}
-                      className="px-2.5 py-1 bg-dark-800/80 backdrop-blur-sm border border-dark-700 text-gray-300 text-xs rounded-full hover:border-primary-500/60 hover:text-primary-400 hover:bg-dark-800 transition-all duration-300 hover:scale-105"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                  {project.technologies.length > 3 && (
-                    <span className="px-2.5 py-1 bg-dark-800/80 backdrop-blur-sm border border-dark-700 text-gray-300 text-xs rounded-full">
-                      +{project.technologies.length - 3}
-                    </span>
-                  )}
-                </div>
-                
-                <div className="flex flex-wrap gap-2">
-                  {project.links.map((link, linkIndex) => (
-                    <motion.a
-                      key={linkIndex}
+                <div className="flex gap-3 ml-4">
+                  {projects[0].links.map((link) => (
+                    <a
+                      key={link.name}
                       href={link.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      whileHover={{ scale: 1.05, y: -2 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="flex items-center space-x-1.5 px-3.5 py-1.5 bg-dark-800/80 backdrop-blur-sm border border-dark-700 hover:border-primary-500/60 hover:bg-primary-500/10 text-gray-300 hover:text-primary-400 rounded-lg text-sm transition-all duration-300 hover:shadow-md hover:shadow-primary-500/20"
+                      className="p-3 bg-white text-black rounded-full hover:bg-gray-200 transition-colors group/btn"
+                      title={link.name}
                     >
-                      <link.icon size={14} />
-                      <span>{link.name}</span>
-                    </motion.a>
+                      {link.name === 'Live' ? (
+                        <ExternalLink size={18} className="group-hover/btn:scale-110 transition-transform" />
+                      ) : (
+                        <Github size={18} className="group-hover/btn:scale-110 transition-transform" />
+                      )}
+                    </a>
                   ))}
                 </div>
               </div>
-            </motion.div>
-          ))}
+            </div>
+          </motion.div>
+
+          {/* Project 2 - Wide */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="group relative md:col-span-2 md:row-span-1 glass-card overflow-hidden border border-white/10"
+            whileHover={{ scale: 1.01 }}
+          >
+            <div className="absolute inset-0">
+              <img 
+                src={projects[1].image} 
+                alt={projects[1].title}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-black/60 group-hover:bg-black/40 transition-colors duration-500" />
+            </div>
+            <div className="absolute bottom-0 left-0 p-8 w-full">
+              <div className="flex justify-between items-end">
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold text-white mb-2 tracking-tight">{projects[1].title}</h3>
+                  <p className="text-gray-300 text-sm mb-4">{projects[1].description}</p>
+                  <div className="flex gap-2">
+                    {projects[1].technologies.slice(0, 3).map((tech) => (
+                      <span key={tech} className="text-xs px-3 py-1 rounded-full bg-white/5 text-white/90 border border-white/10 backdrop-blur-sm">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                <div className="flex gap-3 ml-4">
+                  {projects[1].links.map((link) => (
+                    <a
+                      key={link.name}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-3 bg-white/10 text-white rounded-full hover:bg-white hover:text-black border border-white/10 transition-all group/btn"
+                      title={link.name}
+                    >
+                      {link.name === 'Live' ? (
+                        <ExternalLink size={18} className="group-hover/btn:scale-110 transition-transform" />
+                      ) : (
+                        <Github size={18} className="group-hover/btn:scale-110 transition-transform" />
+                      )}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Tech Stack Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="glass-card p-8 flex flex-col justify-between relative overflow-hidden group border border-white/10 bg-dark-900/50"
+            whileHover={{ y: -5 }}
+          >
+            <div className="absolute inset-0 bg-noise opacity-10"></div>
+            <div className="relative z-10">
+              <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-6 group-hover:bg-white/10 transition-colors">
+                <Code className="text-white" size={20} />
+              </div>
+              <div>
+                <h3 className="font-bold text-xl mb-2 text-white tracking-tight">Tech Stack</h3>
+                <p className="text-sm text-gray-400 leading-relaxed">React, Next.js, Node.js, Python, TypeScript, Tailwind</p>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* GitHub Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            className="glass-card p-8 flex flex-col justify-between group cursor-pointer relative overflow-hidden border border-white/10 bg-dark-900/50"
+            onClick={() => window.open('https://github.com/AdityaKumbhar21', '_blank')}
+            whileHover={{ y: -5 }}
+          >
+            <div className="absolute inset-0 bg-noise opacity-10"></div>
+            <div className="relative z-10">
+              <div className="flex justify-between items-start mb-6">
+                <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-white/10 transition-colors">
+                  <Github className="text-white" size={20} />
+                </div>
+                <ArrowUpRight className="text-gray-500 group-hover:text-white transition-colors" size={20} />
+              </div>
+              <div>
+                <h3 className="font-bold text-xl mb-1 text-white tracking-tight">GitHub</h3>
+                <p className="text-sm text-gray-400">Check out my code</p>
+              </div>
+            </div>
+          </motion.div>
+
         </div>
 
-        {/* View More Button */}
+        {/* View All Projects Link */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
           viewport={{ once: true }}
-          className="mt-12 flex justify-center"
+          transition={{ delay: 0.6 }}
+          className="mt-12 text-center"
         >
-          <a
-            href="https://github.com/AdityaKumbhar21"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-primary px-6 py-3 rounded-lg text-white font-semibold flex items-center gap-2"
+          <Link
+            to="/projects"
+            className="inline-flex items-center gap-2 px-8 py-3 bg-white text-black rounded-full hover:bg-gray-200 transition-all font-medium group"
           >
-            View all projects on GitHub
-          </a>
+            View All Projects
+            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+          </Link>
         </motion.div>
       </div>
     </section>
